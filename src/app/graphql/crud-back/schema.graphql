@@ -1,0 +1,76 @@
+type User {
+  id: Int!
+  name: String!
+  password: String!
+  email: String
+  Products: [Product!]!
+}
+
+type Product {
+  id: Int!
+  name: String!
+  category: String!
+  price: Float!
+  description: String!
+  image: String!
+  username: String!
+  user: User!
+}
+
+type FetchAndSaveProductsResponse {
+  success: Boolean!
+  message: String!
+}
+
+type LoginResponse {
+  access_token: String!
+  user: User!
+}
+
+type Query {
+  products: [Product!]!
+  product(id: Int!): Product!
+  productsByUser(name: String!): [Product!]!
+  users: [User!]!
+  user(name: String!): User!
+}
+
+type Mutation {
+  login(loginUserInput: LoginUserInput!): LoginResponse!
+  signup(loginUserInput: LoginUserInput!): User!
+  createProduct(productsInput: CreateProductInput!): Product!
+  updateProduct(id: Int!, updateProductInput: UpdateProductInput!): Product!
+  deleteProduct(id: Int!): Boolean!
+  fetchAndSaveProducts: FetchAndSaveProductsResponse!
+  createUser(createUserInput: CreateUserInput!): User!
+  register(input: CreateUserInput!): User!
+}
+
+input LoginUserInput {
+  name: String!
+  password: String!
+}
+
+input CreateProductInput {
+  name: String!
+  category: String
+  price: Float!
+  image: String!
+  username: String!
+  description: String!
+}
+
+input UpdateProductInput {
+  name: String
+  category: String
+  price: Float
+  image: String
+  username: String
+  description: String
+  id: Int!
+}
+
+input CreateUserInput {
+  name: String!
+  password: String!
+}

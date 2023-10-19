@@ -59,6 +59,7 @@ export function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any
 		},
 	};
 }
+//Corrección 
 export function createNamedApollo(httpLink: HttpLink)
 : Record<string, ApolloClientOptions<any>> {
 	return {
