@@ -7,7 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "generate-types": "graphql-codegen --config codegen.yml"
   },
   "private": true,
   "dependencies": {
@@ -43,6 +44,7 @@
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.1.3",
-    "@graphql-codegen/introspection": "4.0.0"
+    "@graphql-codegen/introspection": "4.0.0",
+    "@graphql-codegen/fragment-matcher": "5.0.0"
   }
 }

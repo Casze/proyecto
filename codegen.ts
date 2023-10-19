@@ -1,18 +1,28 @@
-
-import type { CodegenConfig } from '@graphql-codegen/cli';
-
+import type { CodegenConfig } from '@graphql-codegen/cli'
+ 
 const config: CodegenConfig = {
-  overwrite: true,
-  schema: "http://localhost:3000",
-  documents: "src/**/*.ts",
+  schema: 'http://localhost:3000/graphql',
+  documents: '',
   generates: {
-    "src/graphql/crud-back/": {
-      plugins: ["typescript-apollo-angular"]
-    },
-    "./graphql.schema.json": {
-      plugins: ["introspection"]
+    'src/app/graphql/generated.ts': {
+      plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular']
     }
   }
-};
+}
+export default config
 
-export default config;
+/* 
+import type { CodegenConfig } from '@graphql-codegen/cli'
+ 
+const config: CodegenConfig = {
+  schema: 'http://localhost:3000/graphql',
+  documents: 'src/app/graphql/crud-back/*.graphql',
+  generates: {
+    'src/app/graphql/generated.ts': {
+      plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular']
+    }
+  }
+}
+export default config
+
+*/

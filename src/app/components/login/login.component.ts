@@ -1,5 +1,9 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { User } from 'graphql/generated';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
+import { map } from 'rxjs';
+import { Observable } from 'rxjs/internal/Observable';
+import { } from '../../services/product-api.service'
 
 @Component({
   selector: 'app-login',
@@ -20,6 +24,7 @@ export class LoginComponent {
   isCapcha = false;
   @Input() redirectToHome = true;
   @Output() redirectTo = new EventEmitter();
+  getAllProductGQL: any;
   constructor(
     private messageService: MessageService,
     private primengConfig: PrimeNGConfig
@@ -59,5 +64,6 @@ export class LoginComponent {
     this.isCapcha = true;
     this.messageService.add({severity: 'info', summary: 'Succees', detail: 'User Responded', sticky: true});
   }
+
 
 }

@@ -1,0 +1,21 @@
+type User {
+  id: Int!
+  name: String!
+  password: String!
+  email: String
+  Products: [Product!]!
+}
+
+fragment UserInfo on User {
+	id
+    name
+    password
+    email
+	  Products
+}
+
+query users {
+  users {
+    ...UserInfo
+  }
+}

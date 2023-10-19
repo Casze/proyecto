@@ -1,0 +1,20 @@
+overwrite: true
+generates:
+  # where to generate file
+  .src/app/graphql/graphql-custom-backend.service.ts: 
+schema:
+  # where the server lives
+  - http://localhost:3000/graphql  
+documents:
+  # where are our queries / mutations, etc.
+  - src/app/graphql/crud-back/*.graphql 
+  # necessary to properly generate types
+plugins:
+  - typescript
+  - typescript-operations
+  - typescript-apollo-angular
+config:
+  # used to disable lint rule: ts(4114) (override)
+  addExplicitOverride: true 
+  
+  # Defined other endpoints with similar logic as above

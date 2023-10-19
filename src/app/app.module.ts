@@ -9,7 +9,7 @@ import { MenuSidebarComponent } from './shared/menu-sidebar/menu-sidebar.compone
 import { MenuTopComponent } from './shared/menu-top/menu-top.component';
 import { GraphQLModule } from './graphql/graphql.module';
 import { PrimengModule } from './primeng/primeng.module';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 
 @NgModule({
