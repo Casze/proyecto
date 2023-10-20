@@ -10,6 +10,7 @@ import { MenuTopComponent } from './shared/menu-top/menu-top.component';
 import { GraphQLModule } from './graphql/graphql.module';
 import { PrimengModule } from './primeng/primeng.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { ProductApiService } from './services/product-api.service';
 
 
 @NgModule({

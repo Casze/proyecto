@@ -1,9 +1,13 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { User } from 'graphql/generated';
+
+import { Component, EventEmitter, Input, Output, OnInit } from '@angular/core';
+import { ApolloClient, ApolloQueryResult, InMemoryCache, gql } from '@apollo/client';
 import { MessageService, PrimeNGConfig } from 'primeng/api';
-import { map } from 'rxjs';
-import { Observable } from 'rxjs/internal/Observable';
-import { } from '../../services/product-api.service'
+import { Observable } from 'rxjs';
+import {  } from 'src/app/graphql/generated';
+
+import { ProductService } from '../../graphql/crud-back/product/product.service';
+import { Product } from '../../graphql/crud-back/product/product.model';
+import { GetAllProductsQueryResult } from '../../graphql/crud-back/graphql.types';
 
 @Component({
   selector: 'app-login',
@@ -13,7 +17,7 @@ import { } from '../../services/product-api.service'
 })
 export class LoginComponent {
 
-@Input() bannerMsj = '';
+  @Input() bannerMsj = '';
   loading = false;
   username = '';
   password = '';
@@ -24,20 +28,23 @@ export class LoginComponent {
   isCapcha = false;
   @Input() redirectToHome = true;
   @Output() redirectTo = new EventEmitter();
-  getAllProductGQL: any;
+
+ 
   constructor(
+    
     private messageService: MessageService,
-    private primengConfig: PrimeNGConfig
-    ) { }
+    private primengConfig: PrimeNGConfig,
+
+  ) { }
 
 
-
-
-  ngOnInit(): void {
+  ngOnInit(): void {    
     this.primengConfig.ripple = true;
+    console.log('Funciona Login.Component.ts linea: 45')
+   
   }
 
-
+  
   login(): void {
     this.loading = true;
     if (this.username && this.username.length > 0) {
@@ -64,6 +71,5 @@ export class LoginComponent {
     this.isCapcha = true;
     this.messageService.add({severity: 'info', summary: 'Succees', detail: 'User Responded', sticky: true});
   }
-
 
 }

@@ -209,3 +209,115 @@ export class GetAllProductsGQL extends Apollo.Query<GetAllProductsQuery> {
     super(apollo);
   }
 }
+
+
+/*
+//============================================================================
+/*
+export type ProductDetailsFragment = { 
+  __typename?: 'Movie', 
+  id: number, 
+  createdAt: string, 
+  updatedAt: string, 
+  title: string, 
+  description?: string | null, 
+  movieCommentCount: number, 
+  isSelected: MovieSelectType, 
+  movieComment: Array<{ 
+    __typename?: 'MovieComment', 
+    id: number, createdAt: string, 
+    description?: string | null, 
+    likes: number, 
+    user: { 
+      __typename?: 'User', 
+      id: number, createdAt: 
+      string, 
+      description?: string | null, 
+      username: string 
+    } 
+  }> };
+  #/
+export type ProductDetailsFragment = { 
+  __typename?: 'Product';
+  category: String;
+  id: number;
+  name: String;
+  price: number;
+};
+
+
+export type ProductInfoFragment = { 
+  __typename?: 'Product';
+  category: String;
+  description: String;
+  id: number;
+  image: String;
+  name: String;
+  price: number;
+  user: User;
+  username: String;
+};
+
+//============================================================================
+
+export const ProductInfoFragmentDoc = gql`
+  fragment ProductInfo on Product {
+    id
+    name
+    category
+    price
+    description
+    image
+    username
+    user
+  }
+    `
+;
+
+export type GetAllProductsQueryVariables = Exact<{ [key: string]: never; }>;
+
+export type GetAllProductsQuery = { 
+  __typename?: 'Query', 
+  products: Array<{ 
+    __typename?: 'Product';
+    category: String;
+    description: String;
+    id: number;
+    image: String;
+    name: String;
+    price: number;
+    user: User;
+    username: String;
+  }> 
+};
+
+export const GetAllProductsDocument = gql`
+  query {
+    products {
+      category
+      description
+      id
+      image
+      name
+      price
+    }
+  }
+  `
+;
+
+@Injectable({
+  providedIn: 'root'
+})
+
+//                                     Apollo.Query<GetAllMoviesQuery, GetAllMoviesQueryVariables>
+export class GetAllProductsGQL extends Apollo.Query<GetAllProductsQuery> {
+  
+  override document = GetAllProductsDocument;
+  
+  constructor(apollo: Apollo.Apollo) {
+    super(apollo);
+  }
+}
+
+
+*/

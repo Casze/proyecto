@@ -1,6 +1,4 @@
-import { Injectable } from '@angular/core';
-import {gql } from 'apollo-angular';
-import * as Apollo from 'apollo-angular';
+import { gql } from 'apollo-angular';
 export type Maybe<T> = T | null;
 export type InputMaybe<T> = Maybe<T>;
 export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
@@ -151,69 +149,5 @@ export type User = {
   password: Scalars['String']['output'];
 };
 
-export type ProductInfoFragment = { 
-  __typename?: 'Product';
-    category: String;
-    description: String;
-    id: number;
-    image: String;
-    name: String;
-    price: number;
-    user: User;
-    username: String;};
 
 
-//============================================================================
-
-export const ProductInfoFragmentDoc = gql`
-  fragment ProductInfo on Product {
-    id
-    name
-    category
-    price
-    description
-    image
-    username
-    user
-  }
-    `
-;
-
-export type GetAllProductsQueryVariables = Exact<{ [key: string]: never; }>;
-
-export type GetAllProductsQuery = { 
-  __typename?: 'Query', 
-  products: Array<{ 
-    __typename?: 'Product';
-    category: String;
-    description: String;
-    id: number;
-    image: String;
-    name: String;
-    price: number;
-    user: User;
-    username: String;
-  }> 
-};
-
-export const GetAllProductsDocument = gql`
-  query products {
-    products {
-      ...productInfo
-    }
-  }
-  ${ProductInfoFragmentDoc}`;
-
-  @Injectable({
-    providedIn: 'root'
-  })
-
-
-//                                     Apollo.Query<GetAllMoviesQuery, GetAllMoviesQueryVariables>
-export class GetAllProductsGQL extends Apollo.Query<GetAllProductsQuery> {
-  override document = GetAllProductsDocument;
-  
-  constructor(apollo: Apollo.Apollo) {
-    super(apollo);
-  }
-}
