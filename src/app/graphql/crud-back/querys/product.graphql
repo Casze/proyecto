@@ -1,0 +1,15 @@
+fragment ProductInfo on Product {
+	id
+	name
+	category
+	price
+	description
+	image
+    username
+}
+
+query GetProducts {
+	products {
+		...ProductInfo
+	}
+}

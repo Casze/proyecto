@@ -1,0 +1,14 @@
+
+fragment UserInfo on User {
+	id
+    name
+    password
+    email
+	  Products
+}
+
+query GetUsers {
+  users {
+    ...UserInfo
+  }
+}

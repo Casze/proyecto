@@ -11,6 +11,7 @@ import { GraphQLModule } from './graphql/graphql.module';
 import { PrimengModule } from './primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
 import { ProductService } from './graphql/crud-back/product/product.service';
+import { ApolloModule } from 'apollo-angular';
 
 
 @NgModule({
@@ -27,9 +28,11 @@ import { ProductService } from './graphql/crud-back/product/product.service';
     AppRoutingModule,
     PrimengModule,
     FormsModule, 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ApolloModule,
+    
   ],
-  providers: [GraphQLModule,ProductService,LoginComponent],
+  providers: [GraphQLModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
