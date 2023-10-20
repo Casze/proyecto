@@ -148,6 +148,3 @@ export type User = {
   name: Scalars['String']['output'];
   password: Scalars['String']['output'];
 };
-
-
-

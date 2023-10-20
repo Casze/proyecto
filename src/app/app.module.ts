@@ -9,8 +9,8 @@ import { MenuSidebarComponent } from './shared/menu-sidebar/menu-sidebar.compone
 import { MenuTopComponent } from './shared/menu-top/menu-top.component';
 import { GraphQLModule } from './graphql/graphql.module';
 import { PrimengModule } from './primeng/primeng.module';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
-import { ProductApiService } from './services/product-api.service';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms'
+import { ProductService } from './graphql/crud-back/product/product.service';
 
 
 @NgModule({
@@ -29,7 +29,7 @@ import { ProductApiService } from './services/product-api.service';
     FormsModule, 
     ReactiveFormsModule
   ],
-  providers: [GraphQLModule],
+  providers: [GraphQLModule,ProductService,LoginComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

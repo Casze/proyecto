@@ -1,20 +1,29 @@
 import { Injectable } from '@angular/core';
-import { Apollo } from 'apollo-angular';
+import { Apollo, QueryRef } from 'apollo-angular'; // Importa QueryRef para manejar las consultas
 import { Observable } from 'rxjs';
-import { ApolloQueryResult } from '@apollo/client';
-import { GetAllProductsQuery, GetAllProductsQueryResult} from '../graphql.types'; // Asegúrate de importar los tipos correctos
+import { ApolloQueryResult } from '@apollo/client/core'; // Asegúrate de importar ApolloQueryResult
+import { GetAllProductsQuery, GetAllProductsQueryResult } from '../graphql.types';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProductService {
-  constructor(private apollo: Apollo) {}
+  private productsQuery: QueryRef<GetAllProductsQueryResult>;
 
-  getAllProducts(): Observable<ApolloQueryResult<GetAllProductsQueryResult>> {
-    return this.apollo.watchQuery<GetAllProductsQueryResult>({
+  constructor(
+
+    private apollo: Apollo,
+
+    ) {
+    // Crea la consulta una vez en el constructor para reutilización
+    this.productsQuery = this.apollo.watchQuery<GetAllProductsQueryResult>({
       query: GetAllProductsQuery,
-    }).valueChanges;
+    });
   }
 
-  // Otros métodos para mutaciones y otras operaciones relacionadas con productos
+  getAllProducts(): Observable<ApolloQueryResult<GetAllProductsQueryResult>> {
+    return this.productsQuery.valueChanges;
+  }
+
+  // Puedes agregar otros métodos para mutaciones u otras operaciones relacionadas con productos aquí
 }
