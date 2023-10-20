@@ -1,11 +1,19 @@
 
 fragment UserInfo on User {
-	id
+  id
+  name
+  password
+  email
+  Products {
+    id
     name
-    password
-    email
-	  Products
+    category
+    price
+    description
+    image
+  }
 }
+
 
 query GetUsers {
   users {

@@ -5,7 +5,7 @@ const config: CodegenConfig = {
   documents: './src/app/graphql/crud-back/querys/*.graphql',
   overwrite: true,
   generates: {
-    'src/app/graphql/generates.ts': {
+    'src/app/graphql/querys.generates.ts': {
       plugins: ['typescript', 'typescript-operations', 'typescript-apollo-angular'],
       config: {addExplicitOverride: true} 
     }
