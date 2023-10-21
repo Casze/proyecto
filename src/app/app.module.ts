@@ -10,8 +10,13 @@ import { MenuTopComponent } from './shared/menu-top/menu-top.component';
 import { GraphQLModule } from './graphql/graphql.module';
 import { PrimengModule } from './primeng/primeng.module';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms'
-import { ProductService } from './graphql/crud-back/product/product.service';
-import { ApolloModule } from 'apollo-angular';
+import { APOLLO_OPTIONS, ApolloModule } from 'apollo-angular';
+import { HttpClientModule } from '@angular/common/http';
+import { HttpLink } from 'apollo-angular/http';
+import { InMemoryCache } from '@apollo/client/core';
+
+
+
 
 
 @NgModule({
@@ -20,7 +25,8 @@ import { ApolloModule } from 'apollo-angular';
     LoginComponent,
     HomeComponent,
     MenuSidebarComponent,
-    MenuTopComponent  
+    MenuTopComponent,
+      
   ],
   imports: [
     BrowserModule,
@@ -30,9 +36,21 @@ import { ApolloModule } from 'apollo-angular';
     FormsModule, 
     ReactiveFormsModule,
     ApolloModule,
-    
+    HttpClientModule
   ],
-  providers: [GraphQLModule],
+  providers: [GraphQLModule,
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: (httpLink: HttpLink) => {
+        return {
+          cache: new InMemoryCache(),
+          link: httpLink.create({
+            uri: "http://localhost:3000/graphql"
+          })
+        }
+      },
+      deps: [HttpLink]
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

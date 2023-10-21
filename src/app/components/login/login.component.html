@@ -3,3 +3,24 @@
       hola
     </li>
 </ul>
+
+
+<p-table [value]="test2" [tableStyle]="{ 'min-width': '50rem' }">
+  <ng-template pTemplate="header">
+      <tr>
+          <th>tituilo category</th>
+          <th>tituilo description</th>
+          <th>tituilo 3</th>
+          <th>tituilo imagen</th>
+      </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-test>
+      <tr>
+          <td>{{ test.category }}</td>
+          <td>{{ test.description }}</td>
+          <td>{{ test.price }}</td>
+          <td>
+            <img class="w-9 sm:w-16rem xl:w-10rem shadow-2 block xl:block mx-auto border-round" [src]="test.image" [alt]="test.name" /></td>
+      </tr>
+  </ng-template>
+</p-table>
